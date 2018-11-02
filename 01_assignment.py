@@ -76,6 +76,7 @@ def exercise05():
     # ------ Place code below here \/ \/ \/ ------
     first_name = "Luke"
     last_name = "Yeh"
+    name_type = type(first_name)
     # ------ Place code above here /\ /\ /\ ------
 
     return first_name, last_name, name_type
