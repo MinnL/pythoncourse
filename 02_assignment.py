@@ -22,19 +22,21 @@ def exercise01():
     # Create a list called animals containing the following animals: cat, dog, crouching tiger, hidden dragon, manta ray
 
     # ------ Place code below here \/ \/ \/ ------
-
+    animals = ["cat", "dog", "crouching tiger", "hidden dragon", "manta ray"]
 
     # ------ Place code above here /\ /\ /\ ------
 
     return animals
 
-
 def exercise02():
     # Repeat exercise 1 and loop through and print each item in the animal list by iterating through an index number and using range(). Set the variable len_animals to the length of the animal list.
 
     # ------ Place code below here \/ \/ \/ ------
-
-
+    animals = ["cat", "dog", "crouching tiger", "hidden dragon", "manta ray"]
+    len_animals = len(animals)
+    for n in range(0,len_animals):
+        print(animals[n])
+    
     # ------ Place code above here /\ /\ /\ ------
 
     return animals, len_animals
@@ -46,11 +48,14 @@ def exercise03():
     the_fifth_element = -999
 
     # ------ Place code below here \/ \/ \/ ------
-
+    
+    countdown = sorted(countdown,reverse=True)
+    the_fifth_element = countdown[4]
 
     # ------ Place code above here /\ /\ /\ ------
 
     return countdown, the_fifth_element
+
 
 
 def exercise04(more_temperatures, iot_sensor_points, a, b, c, d, e):
@@ -69,20 +74,28 @@ def exercise04(more_temperatures, iot_sensor_points, a, b, c, d, e):
     copy_of_samples = []
 
     # ------ Place code below here \/ \/ \/ ------
-
-
-
+    temperatures = temperatures + list(more_temperatures)
+    temperatures = temperatures + list(iot_sensor_points.values())
+    temperatures.extend([a,b,c,d,e])
+    temperatures = sorted(temperatures, reverse=True)
+    for n in range(4,len(temperatures),5):
+        samples.append(temperatures[n])
+    copy_of_samples = samples
+    samples = sorted(samples)
+    
     # ------ Place code above here /\ /\ /\ ------
 
     return samples, temperatures, more_temperatures, iot_sensor_points, a, b, c, d, e, copy_of_samples
-
 
 def exercise05(n):
     # This function will find n factorial using recursion (calling itself) and return the solution. For example exercise05(5) will return 120. No Python functions are to be used.
 
     # ------ Place code below here \/ \/ \/ ------
 
-    pass # Remove this line
+    if n == 1:
+        return 1
+    else:
+        return (n * exercise05(n-1)) 
 
     # ------ Place code above here /\ /\ /\ ------
 
@@ -91,7 +104,10 @@ def exercise06(n):
      # This function will receive an arbitrary list of numbers of arbitrary size and find the average of those numbers. The size of the list may vary. Find the method that requires the  least amount of code. Return back the length, sum of list and average of list
 
     # ------ Place code below here \/ \/ \/ ------
-
+    
+    length_n = len(n)
+    sum_n = sum(n)
+    average_n = sum(n)/len(n)
 
     # ------ Place code above here /\ /\ /\ ------
     return length_n, sum_n, average_n
@@ -101,7 +117,8 @@ def exercise07(n):
     # This function looks for duplicates in list n. If there is a duplicate False is returned. If there are no duplicates True is returned.
 
     # ------ Place code below here \/ \/ \/ ------
-
+ 
+    return len(n) == len(set(n)) 
 
     # ------ Place code above here /\ /\ /\ ------
 
@@ -117,8 +134,60 @@ def exercise07(n):
 # 8. The menu options should repeatedly be displayed after each selection (and appropriate delegate function is called) until user selects exist
 
 # ------ Place code below here \/ \/ \/ ------
+# for 7
+def made(item):
+    print(str(item) + " made!")
+
+def display_menu(menu):
+
+    order = []
+    user_active = True
+    exit = len(menu)
+
+# check menu type
+
+    if isinstance(menu, tuple):
+
+# create meu list with index
+       
+        menu_list = []
+        index = 1
+        for i in menu:
+            menu_list.append(str(index) + ' '+ i )
+            index = index + 1
+        menu_list.append(str(index)+ '.' +'Exit')
+
+        len_menu = len(menu_list)
+        exit_n = len_menu 
 
 
+# application
+        while user_active:
+            print("Menu: ")
+            for i in menu_list:
+                print(i)
+# check input type                  
+            try:
+                choice = int(input("Select a menu item by corrsponding number: "))
+                
+                if choice > len_menu:
+                    print(" The number is out of range! Please type in a number on the menu")
+
+                elif choice == exit_n:
+                    user_active = False
+                    return len_menu,exit
+                    
+                
+                else:
+                    made(menu[choice-1])
+                    order.append(menu[choice-1])
+                    
+                
+            except ValueError:
+                print(" You are not typing a number. Please try typing a number! ")
+    else:
+        error = -1
+        return error,exit
 
 # ------ Place code above here /\ /\ /\ ------
 
@@ -132,7 +201,9 @@ def exercise09():
     
     # ------ Place code below here \/ \/ \/ ------
     
-
+    for n in range(0,9):    
+        dogs.append(str(dog_media.content))
+        dog_media = r.get(url=url) 
 
     # ------ Place code above here /\ /\ /\ ------
 
@@ -145,7 +216,9 @@ def exercise10(sentence):
 
     # ------ Place code below here \/ \/ \/ ------
     
-
+    text = sentence.replace(" ","_")
+    text = text.swapcase()
+    reversed = text[::-1]
 
     # ------ Place code above here /\ /\ /\ ------
     return reversed
@@ -247,3 +320,5 @@ class TestAssignment2(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
