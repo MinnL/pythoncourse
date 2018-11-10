@@ -134,13 +134,12 @@ def exercise07(n):
 # 8. The menu options should repeatedly be displayed after each selection (and appropriate delegate function is called) until user selects exist
 
 # ------ Place code below here \/ \/ \/ ------
-# for 7
 def made(item):
     print(str(item) + " made!")
 
 def display_menu(menu):
 
-    order = []
+    
     user_active = True
     exit = len(menu)
 
@@ -180,7 +179,7 @@ def display_menu(menu):
                 
                 else:
                     made(menu[choice-1])
-                    order.append(menu[choice-1])
+                    
                     
                 
             except ValueError:
