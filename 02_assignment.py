@@ -139,7 +139,6 @@ def made(item):
 
 def display_menu(menu):
 
-    
     user_active = True
     exit = len(menu)
 
@@ -159,7 +158,6 @@ def display_menu(menu):
         len_menu = len(menu_list)
         exit_n = len_menu 
 
-
 # application
         while user_active:
             print("Menu: ")
@@ -167,16 +165,15 @@ def display_menu(menu):
                 print(i)
 # check input type                  
             try:
-                choice = int(input("Select a menu item by corrsponding number: "))
+                choice = int(input("Select a menu item on the screen: "))
                 
                 if choice > len_menu:
-                    print(" The number is out of range! Please type in a number on the menu")
+                    print(" The number is not valid! Please type in a number on the menu")
 
                 elif choice == exit_n:
                     user_active = False
                     return len_menu,exit
-                    
-                
+                                   
                 else:
                     made(menu[choice-1])
                     
